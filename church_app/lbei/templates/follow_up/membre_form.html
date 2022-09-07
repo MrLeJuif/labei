@@ -1,0 +1,28 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2>
+            {% if not form.instance.pk %}
+            Ajouter un nouveau membre
+            {% else %}
+            Modifier un nouveau membre
+            {% endif %}
+        </h2>
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                    <p>
+                        <button type="submit" class="btn btn-primary">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-plus-circle"/></svg>
+                            Ajouter
+                        </button>
+                        <a class="btn btn-dark" href="{% url 'follow_up:list' %}" role="button">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-arrow-return-left"/></svg>
+                            Annuler
+                        </a>
+                    </p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

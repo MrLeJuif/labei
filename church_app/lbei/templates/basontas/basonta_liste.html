@@ -1,0 +1,30 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2> Liste des basontas </h2>
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark" style="position:sticky">
+                    <tr>
+                        <th>Nom du basonta</th>
+                        <th>Leader du Basonta</th>
+                        <th>Plus d'infos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for basonta in basontas %}
+                        {% if basonta.pk != 9 %}
+                            <tr>
+                                <h6>
+                                    <td>{{basonta.nom_basonta}}</td>
+                                    <td>{{basonta.leader_basonta}}</td>
+                                    <td><a href="{{basonta.id}}">Plus d'infos</a></td>
+                                </h6>
+                            </tr>
+                        {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2>Details</h2>
+            <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{membre_details.nom_membre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Prénom</th>
+                        <td>{{membre_details.prenom_membre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Téléphone</th>
+                        <td>{{membre_details.numero_membre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{membre_details.adresse_membre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Role</th>
+                        <td>{{membre_details.role_membre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bacenta</th>
+                        <td>{{membre_details.bacenta_membre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Basonta</th>
+                        <td>{{membre_details.basonta_membre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bapteme d'eau</th>
+                        <td>{{membre_details.bapteme_eau}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bapteme de l'Esprit</th>
+                        <td>{{membre_details.bapteme_esprit}}</td>
+                    </tr>
+            </table>
+        <p>
+                <a class="btn btn-warning" href="{% url 'follow_up:update' pk=membre_details.pk %}">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-pencil-square"/></svg>
+                    Modifier
+                </a>
+                <a class="btn btn-danger" href="{% url 'follow_up:delete' pk=membre_details.pk %}">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-x-circle"/></svg>
+                    Supprimer
+                </a>
+            </p>
+    </div>
+
+{% endblock %}

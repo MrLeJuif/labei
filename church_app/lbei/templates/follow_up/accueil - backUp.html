@@ -1,0 +1,71 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <div class="mt-2"><h2> La Belle Eglise Internationnale - Bingerville </h2></div>
+                <h6 align="center">La liste de tous les formulaires</h6>
+                <h6 class="text-secondary" align="center">Cliquer sur le boutton ci-dessous</h6>
+                <p align="center">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#MyModal">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#form"/></svg>
+                        Remplir
+                    </button>
+                </p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="MyModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Selectionner le formulaire à remplir</h4>
+          </div>
+            <!-- ... -->
+          <div class="modal-body">
+            <div role="tabpanel">
+                <!-- nav tabs -->
+                <ul class="nav nav-pills">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" id="bacenta-tab"
+                    type="button" data-bs-target="#bacenta-form" aria-controls="bacenta-form"
+                    aria-selected="true">Reunion de Bacenta</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" id="basonta-tab"
+                    type="button" data-bs-target="#basonta-form" aria-controls="basonta-form"
+                    aria-selected="true">Reunion de Basonta</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" id="sunday-tab"
+                    type="button" data-bs-target="#sunday-form" aria-controls="sunday-form"
+                    aria-selected="true">Rapport de dimanche</button>
+                  </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content container">
+                    <div class="tab-pane active" id="bacenta-form">
+                        <p>Bacenta</p>
+                    </div>
+                    <div class="tab-pane fade" id="basonta-form">
+                        <p>Basonta</p>
+                    </div>
+                    <div class="tab-pane fade" id="sunday-form">
+                        <p>Dimanche</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-primary">Valider</button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

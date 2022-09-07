@@ -1,0 +1,42 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2> Liste des membres </h2>
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark" style="position:sticky">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Téléphone</th>
+                        <th>Adresse</th>
+                        <th>Bacenta</th>
+                        <th>Basonta</th>
+                        <th>Plus d'infos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for membre in membres %}
+                        <tr>
+                            <h6>
+                                <td>{{membre.nom_membre}}</td>
+                                <td>{{membre.prenom_membre}}</td>
+                                <td>{{membre.numero_membre}}</td>
+                                <td>{{membre.adresse_membre}}</td>
+                                <td>{{membre.bacenta_membre}}</td>
+                                <td>{{membre.basonta_membre}}</td>
+                                <td><a href="{{membre.id}}">Plus d'infos</a></td>
+                            </h6>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <p>
+                <a class="btn btn-primary" href="{% url 'follow_up:create' %}">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-plus-circle"/></svg>
+                    Ajouter
+                </a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

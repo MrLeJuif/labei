@@ -1,0 +1,28 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2> Liste des branches </h2>
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark" style="position:sticky">
+                    <tr>
+                        <th>Nom de la branche</th>
+                        <th>Leader de la branche</th>
+                        <th>Plus d'infos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for branche in branches %}
+                        <tr>
+                            <h6>
+                                <td>{{branche.nom_branche}}</td>
+                                <td>{{branche.leader_branche}}</td>
+                                <td><a href="{{branche.id}}">Plus d'infos</a></td>
+                            </h6>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

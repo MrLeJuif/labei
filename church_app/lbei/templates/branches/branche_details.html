@@ -1,0 +1,56 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2>{{branche_details.nom_branche}}</h2>
+            <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Nom de la branche</th>
+                        <td>{{branche_details.nom_branche}}</td>
+                    </tr>
+                    <tr>
+                        <th>Leader de la branche</th>
+                        <td>{{branche_details.leader_branche}}</td>
+                    </tr>
+            </table>
+        <!-- Liste des membres appartenant au bacenta -->
+        <br>
+        <h5>Liste des membres appartenant à la branche</h5>
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-primary" style="position:sticky">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Téléphone</th>
+                        <th>Adresse</th>
+                        <th>Basonta</th>
+                        <th>Bapteme d'eau</th>
+                        <th>Bapteme du Saint Esprit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for branche in branche_details.branches.all %}
+                        <tr>
+                            <h6>
+                                <td>{{branche.nom_membre}}</td>
+                                <td>{{branche.prenom_membre}}</td>
+                                <td>{{branche.numero_membre}}</td>
+                                <td>{{branche.adresse_membre}}</td>
+                                <td>{{branche.basonta_membre}}</td>
+                                <td>{{branche.bapteme_eau}}</td>
+                                <td>{{branche.bapteme_esprit}}</td>
+                            </h6>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p>
+                <a class="btn btn-dark" href="{% url 'follow_up:branche_list'%}">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-arrow-return-left"/></svg>
+                    Retour
+                </a>
+            </p>
+    </div>
+
+{% endblock %}

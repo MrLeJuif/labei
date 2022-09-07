@@ -1,0 +1,30 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2> Liste des bacentas </h2>
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark" style="position:sticky">
+                    <tr>
+                        <th>Nom du bacenta</th>
+                        <th>Leader du Bacenta</th>
+                        <th>Plus d'infos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bacenta in bacentas %}
+                        {% if bacenta.pk != 8 %}
+                            <tr>
+                                <h6>
+                                    <td>{{bacenta.nom_bacenta}}</td>
+                                    <td>{{bacenta.leader_bacenta}}</td>
+                                    <td><a href="{{bacenta.id}}">Plus d'infos</a></td>
+                                </h6>
+                            </tr>
+                        {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

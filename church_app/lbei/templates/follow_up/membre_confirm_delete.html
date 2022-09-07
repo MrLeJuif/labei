@@ -1,0 +1,59 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2>
+            Voulez-vous supprimer : {{membre.nom_membre}} {{membre.prenom_membre}} ?
+        </h2>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="container">
+                    <p>
+                        <button type="submit" class="btn btn-danger">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-x-circle"/></svg>
+                            Supprimer
+                        </button>
+                        <a class="btn btn-dark" href="{% url 'follow_up:details' pk=membre.pk %}" role="button">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-arrow-return-left"/></svg>
+                            Annuler
+                        </a>
+                    </p>
+                </div>
+            </form>
+    </div>
+
+
+
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Veuillez-confirmer !</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Voulez-vous supprimer : {{membre.nom_membre}} {{membre.prenom_membre}} ?</p>
+          </div>
+          <div class="modal-footer">
+            <form method="post">
+                {% csrf_token %}
+                <div class="container">
+                    <p>
+                        <button type="submit" class="btn btn-danger">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-x-circle"/></svg>
+                            Supprimer
+                        </button>
+                        <a class="btn btn-dark" href="{% url 'follow_up:details' pk=membre.pk %}" role="button">
+                            <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-arrow-return-left"/></svg>
+                            Annuler
+                        </a>
+                    </p>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

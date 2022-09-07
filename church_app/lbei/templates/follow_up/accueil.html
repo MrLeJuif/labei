@@ -1,0 +1,168 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <div class="mt-2"><h3> La Belle Eglise Internationnale - Bingerville </h3></div>
+                <h6 class="text-secondary" align="center">La liste de tous les formulaires</h6>
+                <br>
+            </div>
+        </div>
+        <!-- Menu des rapports -->
+        <div class="d-flex justify-content-center border-top border-bottom border-secondary">
+            <ul class="nav nav-pills">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" id="bacenta-tab"
+                    type="button" data-bs-target="#bacenta-form" aria-controls="bacenta-form"
+                    aria-selected="true">Reunion de Bacenta</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" id="basonta-tab"
+                    type="button" data-bs-target="#basonta-form" aria-controls="basonta-form"
+                    aria-selected="true">Reunion de Basonta</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" id="sunday-tab"
+                    type="button" data-bs-target="#sunday-form" aria-controls="sunday-form"
+                    aria-selected="true">Rapport de dimanche</button>
+                </li>
+            </ul>
+        </div>
+        <!-- fin des menus -->
+        <br>
+        <!-- Tab panes -->
+        <div class="tab-content container">
+            <div class="tab-pane active" id="bacenta-form">
+                <!-- Debut -->
+                <div class="container">
+                    <h5> Rapports de Bacentas </h5>
+                    <div>
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark" style="position:sticky">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Bacenta</th>
+                                    <th>Thème</th>
+                                    <th>Enfant</th>
+                                    <th>Adulte</th>
+                                    <th>Nouveau venu</th>
+                                    <th>Née de nouveau</th>
+                                    <th>Offrande</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for rapport_bacenta in bacenta_rapports %}
+                                    <tr>
+                                        <h6>
+                                            <td>{{rapport_bacenta.date}}</td>
+                                            <td>{{rapport_bacenta.basonta}}</td>
+                                            <td>{{rapport_bacenta.theme}}</td>
+                                            <td>{{rapport_bacenta.enfant}}</td>
+                                            <td>{{rapport_bacenta.adulte}}</td>
+                                            <td>{{rapport_bacenta.nouveau}}</td>
+                                            <td>{{rapport_bacenta.nee_de_nouveau}}</td>
+                                            <td>{{rapport_bacenta.offrande}}</td>
+                                        </h6>
+                                    </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <p>
+                            <a class="btn btn-primary" href="{% url 'follow_up:create_bacenta_rapport' %}">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-plus-circle"/></svg>
+                                Ajouter
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Fin -->
+            </div>
+            <div class="tab-pane fade" id="basonta-form">
+                <!-- Debut -->
+                <div class="container">
+                    <h5> Rapports de Basontas </h5>
+                    <div>
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark" style="position:sticky">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Basonta</th>
+                                    <th>Thème</th>
+                                    <th>Enfant</th>
+                                    <th>Adulte</th>
+                                    <th>Nouveau venus</th>
+                                    <th>Offrande</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for rapport_basonta in basonta_rapports %}
+                                    <tr>
+                                        <h6>
+                                            <td>{{rapport_basonta.date}}</td>
+                                            <td>{{rapport_basonta.basonta}}</td>
+                                            <td>{{rapport_basonta.theme}}</td>
+                                            <td>{{rapport_basonta.enfant}}</td>
+                                            <td>{{rapport_basonta.adulte}}</td>
+                                            <td>{{rapport_basonta.nouveau}}</td>
+                                            <td>{{rapport_basonta.offrande}}</td>
+                                        </h6>
+                                    </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <p>
+                            <a class="btn btn-primary" href="{% url 'follow_up:create_basonta_rapport' %}">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-plus-circle"/></svg>
+                                Ajouter
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Fin -->
+            </div>
+            <div class="tab-pane fade" id="sunday-form">
+                <!-- Debut -->
+                <div class="container">
+                    <h5> Rapports des Rassemblements </h5>
+                    <div>
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark" style="position:sticky">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Bacenta</th>
+                                    <th>Enfant</th>
+                                    <th>Adulte</th>
+                                    <th>Nouveau venu</th>
+                                    <th>Offrande</th>
+                                    <th>Transport</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for sunday_rapport in sunday_rapports %}
+                                    <tr>
+                                        <h6>
+                                            <td>{{sunday_rapport.date}}</td>
+                                            <td>{{sunday_rapport.basonta}}</td>
+                                            <td>{{sunday_rapport.enfant}}</td>
+                                            <td>{{sunday_rapport.adulte}}</td>
+                                            <td>{{sunday_rapport.nouveau}}</td>
+                                            <td>{{sunday_rapport.offrande}}</td>
+                                            <td>{{sunday_rapport.transport}}</td>
+                                        </h6>
+                                    </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <p>
+                            <a class="btn btn-primary" href="{% url 'follow_up:create_sunday_rapport' %}">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-plus-circle"/></svg>
+                                Ajouter
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <!-- Fin -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

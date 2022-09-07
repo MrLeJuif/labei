@@ -1,0 +1,56 @@
+{% extends "follow_up/base.html" %}
+{% block body_block %}
+    <div class="container">
+        <h2>{{bacenta_details.nom_bacenta}}</h2>
+            <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{bacenta_details.nom_bacenta}}</td>
+                    </tr>
+                    <tr>
+                        <th>Leader du Bacenta</th>
+                        <td>{{bacenta_details.leader_bacenta}}</td>
+                    </tr>
+            </table>
+        <!-- Liste des membres appartenant au bacenta -->
+        <br>
+        <h5>Liste des membres appartenant au Bacenta</h5>
+        <div>
+            <table class="table table-bordered table-striped">
+                <thead class="table-primary" style="position:sticky">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Téléphone</th>
+                        <th>Adresse</th>
+                        <th>Basonta</th>
+                        <th>Bapteme d'eau</th>
+                        <th>Bapteme du Saint Esprit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bacenta in bacenta_details.bacentas.all %}
+                        <tr>
+                            <h6>
+                                <td>{{bacenta.nom_membre}}</td>
+                                <td>{{bacenta.prenom_membre}}</td>
+                                <td>{{bacenta.numero_membre}}</td>
+                                <td>{{bacenta.adresse_membre}}</td>
+                                <td>{{bacenta.basonta_membre}}</td>
+                                <td>{{bacenta.bapteme_eau}}</td>
+                                <td>{{bacenta.bapteme_esprit}}</td>
+                            </h6>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p>
+                <a class="btn btn-dark" href="{% url 'follow_up:bacenta_list'%}">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-arrow-return-left"/></svg>
+                    Retour
+                </a>
+            </p>
+    </div>
+
+{% endblock %}
