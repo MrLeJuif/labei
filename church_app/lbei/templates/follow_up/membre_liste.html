@@ -1,7 +1,12 @@
 {% extends "follow_up/base.html" %}
 {% block body_block %}
-    <div class="container">
-        <h2> Liste des membres </h2>
+    <div class="container scrollarea">
+        <h2 id="top"> Liste des membres </h2>
+                <!-- Ajout de la barre de recherche, basée sur du Java script. -->
+                <p>Saisissez le nom d'un membre dans la barre de recherche pour effectuer une recherche dans la tableau suivant :</p>
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>
+
         <div>
             <table class="table table-bordered table-striped">
                 <thead class="table-dark" style="position:sticky">
@@ -15,7 +20,7 @@
                         <th>Plus d'infos</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
                     {% for membre in membres %}
                         <tr>
                             <h6>
@@ -37,6 +42,26 @@
                     Ajouter
                 </a>
             </p>
+            <div class="d-md-flex justify-content-md-end">
+              <a class="nav-item nav-link" href="#top" internal>
+                  <button class="btn btn-secondary" type="button">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#bi-arrow-up-circle"/></svg>
+                      Haut du tableau
+                  </button>
+              </a>
+         </div>
         </div>
     </div>
+
+<script>
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+</script>
+
 {% endblock %}
